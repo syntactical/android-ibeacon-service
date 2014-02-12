@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="android-ibeacon-library">
+    <output-path>$PROJECT_DIR$/build/classes/artifacts/android_ibeacon_library</output-path>
+    <root id="archive" name="android-ibeacon-library.jar">
+      <element id="module-output" name="AndroidIBeaconLibrary" />
+    </root>
+  </artifact>
+</component>

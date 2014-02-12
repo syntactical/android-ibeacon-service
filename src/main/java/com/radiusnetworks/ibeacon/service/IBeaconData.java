@@ -23,14 +23,13 @@
  */
 package com.radiusnetworks.ibeacon.service;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import com.radiusnetworks.ibeacon.IBeacon;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-
-import com.radiusnetworks.ibeacon.IBeacon;
-
-import android.os.Parcel;
-import android.os.Parcelable;
 
 public class IBeaconData extends IBeacon implements Parcelable {
     public IBeaconData(IBeacon iBeacon) {
@@ -67,6 +66,7 @@ public class IBeaconData extends IBeacon implements Parcelable {
         out.writeDouble(getAccuracy());
         out.writeInt(rssi);
         out.writeInt(txPower);
+        out.writeString(macAddress);
     }
 
     public static final Parcelable.Creator<IBeaconData> CREATOR
@@ -88,5 +88,6 @@ public class IBeaconData extends IBeacon implements Parcelable {
         accuracy = in.readDouble();
         rssi = in.readInt();
         txPower = in.readInt();
+        macAddress = in.readString();
     }
 }

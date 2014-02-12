@@ -23,20 +23,6 @@
  */
 package com.radiusnetworks.ibeacon.service;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import com.radiusnetworks.ibeacon.IBeacon;
-import com.radiusnetworks.ibeacon.IBeaconManager;
-import com.radiusnetworks.ibeacon.Region;
-
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -44,14 +30,14 @@ import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
-import android.os.AsyncTask;
-import android.os.Binder;
-import android.os.DeadObjectException;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
+import android.os.*;
 import android.util.Log;
+import com.radiusnetworks.ibeacon.IBeacon;
+import com.radiusnetworks.ibeacon.IBeaconManager;
+import com.radiusnetworks.ibeacon.Region;
+
+import java.lang.ref.WeakReference;
+import java.util.*;
 
 /**
  * @author dyoung
@@ -526,7 +512,7 @@ public class IBeaconService extends Service {
             ScanData scanData = params[0];
 
             IBeacon iBeacon = IBeacon.fromScanData(scanData.scanRecord,
-                    scanData.rssi);
+                    scanData.rssi, scanData.device.getAddress());
             if (iBeacon != null) {
                 processIBeaconFromScan(iBeacon);
             }
